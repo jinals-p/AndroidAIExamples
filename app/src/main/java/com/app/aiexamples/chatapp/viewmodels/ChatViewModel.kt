@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 
 class ChatViewModel : ViewModel() {
 
-    private val model = GenerativeModel(modelName = "gemini-2.5-flash", apiKey = "AIzaSyA_GsTPsgLWmtUPyjhLxPUyVdyuxF-W5MA")
+    private val model = GenerativeModel(modelName = "gemini-2.5-flash", apiKey = "YOUR_GEMENI_API_KEY")
     private val chat = model.startChat()
 
     val analyzeState = MutableStateFlow<AnalyzeState>(AnalyzeState.Idle)
