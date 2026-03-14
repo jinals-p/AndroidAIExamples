@@ -1,15 +1,16 @@
-package com.app.aiexamples.chatapp.viewmodels// PhotoViewModel.kt
+package com.app.aiexamples.geminichatapp.viewmodels// PhotoViewModel.kt
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.app.aiexamples.chatapp.Message
+import com.app.aiexamples.BuildConfig
+import com.app.aiexamples.geminichatapp.Message
 import com.google.ai.client.generativeai.GenerativeModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class ChatViewModel : ViewModel() {
-
-    private val model = GenerativeModel(modelName = "gemini-2.5-flash", apiKey = "YOUR_GEMENI_API_KEY")
+    //apiKey = Your Gemini api key
+    private val model = GenerativeModel(modelName = "gemini-2.5-flash", apiKey = BuildConfig.GEMINI_API_KEY)
     private val chat = model.startChat()
 
     val analyzeState = MutableStateFlow<AnalyzeState>(AnalyzeState.Idle)

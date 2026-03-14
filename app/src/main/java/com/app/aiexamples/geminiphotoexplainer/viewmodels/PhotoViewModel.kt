@@ -1,8 +1,8 @@
-package com.app.aiexamples.photoexplainer.viewmodels// PhotoViewModel.kt
+package com.app.aiexamples.geminiphotoexplainer.viewmodels// PhotoViewModel.kt
 import android.graphics.Bitmap
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.app.aiexamples.photoexplainer.helper.GeminiHelper
+import com.app.aiexamples.geminiphotoexplainer.helper.GeminiHelper
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch

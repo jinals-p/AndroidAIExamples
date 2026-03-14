@@ -1,4 +1,4 @@
-package com.app.aiexamples.chatapp
+package com.app.aiexamples.geminichatapp
 
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
@@ -55,8 +55,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.app.aiexamples.chatapp.viewmodels.AnalyzeState
-import com.app.aiexamples.chatapp.viewmodels.ChatViewModel
+import com.app.aiexamples.geminichatapp.viewmodels.AnalyzeState
+import com.app.aiexamples.geminichatapp.viewmodels.ChatViewModel
 import com.app.aiexamples.core.theme.AIExamplesTheme
 import com.app.aiexamples.core.theme.AccentPurple
 import com.app.aiexamples.core.theme.Background

@@ -1,4 +1,4 @@
-package com.app.aiexamples.photoexplainer
+package com.app.aiexamples.geminiphotoexplainer
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -32,8 +32,8 @@ import com.app.aiexamples.core.theme.BorderBright
 import com.app.aiexamples.core.theme.Card
 import com.app.aiexamples.core.theme.TextMuted
 import com.app.aiexamples.core.theme.TextPrimary
-import com.app.aiexamples.photoexplainer.viewmodels.AnalyzeState
-import com.app.aiexamples.photoexplainer.viewmodels.PhotoViewModel
+import com.app.aiexamples.geminiphotoexplainer.viewmodels.AnalyzeState
+import com.app.aiexamples.geminiphotoexplainer.viewmodels.PhotoViewModel
 
 // ── Root Composable ───────────────────────────────────────────────────────────
 @Composable

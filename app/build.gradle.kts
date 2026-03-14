@@ -2,6 +2,13 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
 }
+val localProperties = org.jetbrains.kotlin.konan.properties.Properties()
+val localPropertiesFile: File? = rootProject.file("local.properties")
+if (localPropertiesFile?.exists() == true) {
+    localPropertiesFile.inputStream().use { inputStream ->
+        localProperties.load(inputStream)
+    }
+}
 
 android {
     namespace = "com.app.aiexamples"
@@ -19,6 +26,7 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "GEMINI_API_KEY", "${localProperties.getProperty("gemeni_api_key")}")
     }
 
     buildTypes {
@@ -33,6 +41,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
@@ -53,9 +62,27 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
-    implementation(libs.generativeai)
     implementation(libs.sdp.compose)
     implementation(libs.androidx.material.icons.extended)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.accompanist.permissions)
+
+    /*Gemini*/
+    implementation(libs.generativeai)
+
+    // ML Kit Barcode
+    implementation(libs.mlkit.barcode)
+    // ML Kit Face detection
+    implementation(libs.mlkit.face)
+
+    // ML Kit Text detection
+    implementation(libs.mlkit.text)
+    // ML Kit Image Labeling
+    implementation(libs.mlkit.imagelabeling)
+
+    // CameraX
+    implementation(libs.camerax.camera2)
+    implementation(libs.camerax.lifecycle)
+    implementation(libs.camerax.view)
 
 }

@@ -1,5 +1,8 @@
 package com.app.aiexamples.core
 
+import android.content.Intent
+import android.net.Uri
+import android.provider.Settings
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -98,4 +101,11 @@ fun PermissionDeniedView(permission: String, onRequestClick: () -> Unit) {
             Text("Grant Permission", color = Color.White)
         }
     }
+}
+
+fun openAppSettings(context: android.content.Context) {
+    val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+        data = Uri.fromParts("package", context.packageName, null)
+    }
+    context.startActivity(intent)
 }

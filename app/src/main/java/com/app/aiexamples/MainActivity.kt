@@ -37,7 +37,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.app.aiexamples.chatapp.ChatScreen
+import com.app.aiexamples.geminichatapp.ChatScreen
 import com.app.aiexamples.core.AppHeader
 import com.app.aiexamples.core.StatusBadge
 import com.app.aiexamples.core.theme.AccentPink
@@ -47,7 +47,11 @@ import com.app.aiexamples.core.theme.Border
 import com.app.aiexamples.core.theme.Card
 import com.app.aiexamples.core.theme.TextMuted
 import com.app.aiexamples.core.theme.TextPrimary
-import com.app.aiexamples.photoexplainer.PhotoExplainerScreen
+import com.app.aiexamples.mlkitfacedetection.FaceDetectionScreen
+import com.app.aiexamples.mlkitimagelabeling.ImageLabelingScreen
+import com.app.aiexamples.mlkitqrscanner.ScannerScreen
+import com.app.aiexamples.mlkittextrecognition.TextRecognitionScreen
+import com.app.aiexamples.geminiphotoexplainer.PhotoExplainerScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -91,6 +95,22 @@ fun HomeScreen(navController: NavController) {
             items(modules) { module ->
                 ModuleCard(module = module) {
                     when (module.number) {
+                        "01" -> navController.navigate(route = Screen.QrScanner.route) {
+                            popUpTo(Screen.Main.route)
+                        }
+
+                        "02" -> navController.navigate(route = Screen.FaceDetector.route) {
+                            popUpTo(Screen.Main.route)
+                        }
+
+                        "03" -> navController.navigate(route = Screen.TextDetector.route) {
+                            popUpTo(Screen.Main.route)
+                        }
+
+                        "04" -> navController.navigate(route = Screen.ImageLabeling.route) {
+                            popUpTo(Screen.Main.route)
+                        }
+
                         "05" -> navController.navigate(route = Screen.PhotoExplainer.route) {
                             popUpTo(Screen.Main.route)
                         }
@@ -146,6 +166,26 @@ fun NavigationStack() {
         composable(route = Screen.Main.route) {
             HomeScreen(navController = navController)
         }
+        composable(route = Screen.QrScanner.route) {
+            ScannerScreen(onBackCallback = {
+                navController.navigate(Screen.Main.route)
+            })
+        }
+        composable(route = Screen.FaceDetector.route) {
+            FaceDetectionScreen(onBackCallback = {
+                navController.navigate(Screen.Main.route)
+            })
+        }
+        composable(route = Screen.TextDetector.route) {
+            TextRecognitionScreen(onBackCallback = {
+                navController.navigate(Screen.Main.route)
+            })
+        }
+        composable(route = Screen.ImageLabeling.route) {
+            ImageLabelingScreen(onBackCallback = {
+                navController.navigate(Screen.Main.route)
+            })
+        }
         composable(route = Screen.PhotoExplainer.route) {
             PhotoExplainerScreen(onBackCallback = {
                 navController.navigate(Screen.Main.route)
@@ -162,6 +202,10 @@ fun NavigationStack() {
 // Screen.kt
 sealed class Screen(val route: String) {
     object Main : Screen("main_screen")
+    object QrScanner : Screen("qr_scanner_screen")
+    object FaceDetector : Screen("face_detector_screen")
+    object TextDetector : Screen("text_detector_screen")
+    object ImageLabeling : Screen("image_labeling_screen")
     object PhotoExplainer : Screen("photo_explainer_screen")
     object Chat : Screen("chat_screen")
 }
